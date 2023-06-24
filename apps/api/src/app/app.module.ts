@@ -2,10 +2,10 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { PrismaClient } from '@prisma/client';
-import { AnswerModule } from '../generated/answer/answer.module';
-import { PageModule } from '../generated/page/page.module';
-import { QuestionModule } from '../generated/question/question.module';
-import { QuestionnaireModule } from '../generated/questionnaire/questionnaire.module';
+import { AnswerModule } from '../modules/answer/answer.module';
+import { PageModule } from '../modules/page/page.module';
+import { QuestionModule } from '../modules/question/question.module';
+import { QuestionnaireModule } from '../modules/questionnaire/questionnaire.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
