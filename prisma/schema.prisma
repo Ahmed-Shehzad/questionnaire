@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator jsonSchema {
+  provider = "prisma-json-schema-generator"
+  output   = "../apps/api/src/schema"
+}
+
+generator docs {
+  provider = "node node_modules/prisma-docs-generator"
+  output   = "../apps/api/src/schema/docs"
+}
+
+generator erd {
+  provider = "prisma-erd-generator"
+  output   = "../apps/api/src/schema/docs/erd.svg"
+}
+
+// generator custom_generator {
+//   provider = "nestjs-prisma-graphql-crud-gen"
+//   output   = "../apps/api/src/generated"
+// }
+
+model Questionnaire {
+  id    Int    @id @default(autoincrement())
+  name  String
+  pages Page[]
+}
+
+model Page {
+  id              Int           @id @default(autoincrement())
+  title           String
+  questions       Question[]
+  questionnaire   Questionnaire @relation(fields: [questionnaireId], references: [id])
+  questionnaireId Int
+  successor       Page?         @relation("successorPage")
+  predecessorId   Int?          @unique
+  predecessor     Page?         @relation("successorPage", fields: [predecessorId], references: [id])
+}
+
+model Question {
+  id         Int          @id @default(autoincrement())
+  page       Page         @relation(fields: [pageId], references: [id])
+  pageId     Int
+  type       QuestionType
+  text       String
+  choices    String[]
+  answer     Answer?
+  nextPageId Int?
+}
+
+model Answer {
+  id         Int      @id @default(autoincrement())
+  questionId Int      @unique
+  Question   Question @relation(fields: [questionId], references: [id])
+  answers    String[]
+}
+
+enum QuestionType {
+  TEXT
+  SINGLE_CHOICE
+  MULTIPLE_CHOICE
+}

@@ -1,0 +1,138 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "Questionnaire": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "pages": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Page"
+          }
+        }
+      }
+    },
+    "Page": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "title": {
+          "type": "string"
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Question"
+          }
+        },
+        "questionnaire": {
+          "$ref": "#/definitions/Questionnaire"
+        },
+        "successor": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Page"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "predecessor": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Page"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "Question": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "page": {
+          "$ref": "#/definitions/Page"
+        },
+        "type": {
+          "type": "string",
+          "enum": [
+            "TEXT",
+            "SINGLE_CHOICE",
+            "MULTIPLE_CHOICE"
+          ]
+        },
+        "text": {
+          "type": "string"
+        },
+        "choices": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "answer": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/Answer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "nextPageId": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        }
+      }
+    },
+    "Answer": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "Question": {
+          "$ref": "#/definitions/Question"
+        },
+        "answers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "type": "object",
+  "properties": {
+    "questionnaire": {
+      "$ref": "#/definitions/Questionnaire"
+    },
+    "page": {
+      "$ref": "#/definitions/Page"
+    },
+    "question": {
+      "$ref": "#/definitions/Question"
+    },
+    "answer": {
+      "$ref": "#/definitions/Answer"
+    }
+  }
+}
