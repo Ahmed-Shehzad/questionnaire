@@ -1,0 +1,17 @@
+query findManyQuestionnaire{
+  id
+  name
+}
+
+query findFirstPage($where: PageWhereInput!) {
+	findFirstPage(where: $where) {
+    id
+	}
+}
+
+query findUniqueQuestionnaire($where: QuestionnaireWhereUniqueInput!) {
+	findUniqueQuestionnaire(where: $where) {
+        id
+        name
+	}
+}

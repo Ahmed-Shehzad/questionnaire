@@ -1,0 +1,1442 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Query {
+  findFirstPage(where: PageWhereInput, orderBy: [PageOrderByWithRelationInput!], cursor: PageWhereUniqueInput, take: Int, skip: Int, distinct: [PageScalarFieldEnum!]): Page!
+  findUniquePage(where: PageWhereUniqueInput!): Page!
+  findManyPage(where: PageWhereInput, orderBy: [PageOrderByWithRelationInput!], cursor: PageWhereUniqueInput, take: Int, skip: Int, distinct: [PageScalarFieldEnum!]): [Page!]!
+  groupByPage(where: PageWhereInput, orderBy: [PageOrderByWithAggregationInput!], by: [PageScalarFieldEnum!]!, having: PageScalarWhereWithAggregatesInput, take: Int, skip: Int): [PageGroupBy!]!
+  aggregatePage(where: PageWhereInput, orderBy: [PageOrderByWithRelationInput!], cursor: PageWhereUniqueInput, take: Int, skip: Int): AggregatePage!
+  findFirstQuestion(where: QuestionWhereInput, orderBy: [QuestionOrderByWithRelationInput!], cursor: QuestionWhereUniqueInput, take: Int, skip: Int, distinct: [QuestionScalarFieldEnum!]): Question!
+  findUniqueQuestion(where: QuestionWhereUniqueInput!): Question!
+  findManyQuestion(where: QuestionWhereInput, orderBy: [QuestionOrderByWithRelationInput!], cursor: QuestionWhereUniqueInput, take: Int, skip: Int, distinct: [QuestionScalarFieldEnum!]): [Question!]!
+  groupByQuestion(where: QuestionWhereInput, orderBy: [QuestionOrderByWithAggregationInput!], by: [QuestionScalarFieldEnum!]!, having: QuestionScalarWhereWithAggregatesInput, take: Int, skip: Int): [QuestionGroupBy!]!
+  aggregateQuestion(where: QuestionWhereInput, orderBy: [QuestionOrderByWithRelationInput!], cursor: QuestionWhereUniqueInput, take: Int, skip: Int): AggregateQuestion!
+  findFirstQuestionnaire(where: QuestionnaireWhereInput, orderBy: [QuestionnaireOrderByWithRelationInput!], cursor: QuestionnaireWhereUniqueInput, take: Int, skip: Int, distinct: [QuestionnaireScalarFieldEnum!]): Questionnaire!
+  findUniqueQuestionnaire(where: QuestionnaireWhereUniqueInput!): Questionnaire!
+  findManyQuestionnaire(where: QuestionnaireWhereInput, orderBy: [QuestionnaireOrderByWithRelationInput!], cursor: QuestionnaireWhereUniqueInput, take: Int, skip: Int, distinct: [QuestionnaireScalarFieldEnum!]): [Questionnaire!]!
+  groupByQuestionnaire(where: QuestionnaireWhereInput, orderBy: [QuestionnaireOrderByWithAggregationInput!], by: [QuestionnaireScalarFieldEnum!]!, having: QuestionnaireScalarWhereWithAggregatesInput, take: Int, skip: Int): [QuestionnaireGroupBy!]!
+  aggregateQuestionnaire(where: QuestionnaireWhereInput, orderBy: [QuestionnaireOrderByWithRelationInput!], cursor: QuestionnaireWhereUniqueInput, take: Int, skip: Int): AggregateQuestionnaire!
+  findFirstAnswer(where: AnswerWhereInput, orderBy: [AnswerOrderByWithRelationInput!], cursor: AnswerWhereUniqueInput, take: Int, skip: Int, distinct: [AnswerScalarFieldEnum!]): Answer!
+  findUniqueAnswer(where: AnswerWhereUniqueInput!): Answer!
+  findManyAnswer(where: AnswerWhereInput, orderBy: [AnswerOrderByWithRelationInput!], cursor: AnswerWhereUniqueInput, take: Int, skip: Int, distinct: [AnswerScalarFieldEnum!]): [Answer!]!
+  groupByAnswer(where: AnswerWhereInput, orderBy: [AnswerOrderByWithAggregationInput!], by: [AnswerScalarFieldEnum!]!, having: AnswerScalarWhereWithAggregatesInput, take: Int, skip: Int): [AnswerGroupBy!]!
+  aggregateAnswer(where: AnswerWhereInput, orderBy: [AnswerOrderByWithRelationInput!], cursor: AnswerWhereUniqueInput, take: Int, skip: Int): AggregateAnswer!
+}
+
+type Page {
+  id: Int!
+  title: String!
+  questionnaireId: Int!
+  predecessorId: Int
+  _count: PageCount
+}
+
+type PageCount {
+  questions: Int!
+}
+
+input PageWhereInput {
+  AND: [PageWhereInput!]
+  OR: [PageWhereInput!]
+  NOT: [PageWhereInput!]
+  id: IntFilter
+  title: StringFilter
+  questions: QuestionListRelationFilter
+  questionnaire: QuestionnaireRelationFilter
+  questionnaireId: IntFilter
+  successor: PageRelationFilter
+  predecessorId: IntNullableFilter
+  predecessor: PageRelationFilter
+}
+
+input IntFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntFilter
+}
+
+input NestedIntFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntFilter
+}
+
+input StringFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  mode: QueryMode
+  not: NestedStringFilter
+}
+
+enum QueryMode {
+  default
+  insensitive
+}
+
+input NestedStringFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringFilter
+}
+
+input QuestionListRelationFilter {
+  every: QuestionWhereInput
+  some: QuestionWhereInput
+  none: QuestionWhereInput
+}
+
+input QuestionWhereInput {
+  AND: [QuestionWhereInput!]
+  OR: [QuestionWhereInput!]
+  NOT: [QuestionWhereInput!]
+  id: IntFilter
+  page: PageRelationFilter
+  pageId: IntFilter
+  type: EnumQuestionTypeFilter
+  text: StringFilter
+  choices: StringNullableListFilter
+  answer: AnswerRelationFilter
+  nextPageId: IntNullableFilter
+}
+
+input PageRelationFilter {
+  is: PageWhereInput
+  isNot: PageWhereInput
+}
+
+input EnumQuestionTypeFilter {
+  equals: QuestionType
+  in: [QuestionType!]
+  notIn: [QuestionType!]
+  not: NestedEnumQuestionTypeFilter
+}
+
+enum QuestionType {
+  TEXT
+  SINGLE_CHOICE
+  MULTIPLE_CHOICE
+}
+
+input NestedEnumQuestionTypeFilter {
+  equals: QuestionType
+  in: [QuestionType!]
+  notIn: [QuestionType!]
+  not: NestedEnumQuestionTypeFilter
+}
+
+input StringNullableListFilter {
+  equals: [String!]
+  has: String
+  hasEvery: [String!]
+  hasSome: [String!]
+  isEmpty: Boolean
+}
+
+input AnswerRelationFilter {
+  is: AnswerWhereInput
+  isNot: AnswerWhereInput
+}
+
+input AnswerWhereInput {
+  AND: [AnswerWhereInput!]
+  OR: [AnswerWhereInput!]
+  NOT: [AnswerWhereInput!]
+  id: IntFilter
+  questionId: IntFilter
+  Question: QuestionRelationFilter
+  answers: StringNullableListFilter
+}
+
+input QuestionRelationFilter {
+  is: QuestionWhereInput
+  isNot: QuestionWhereInput
+}
+
+input IntNullableFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntNullableFilter
+}
+
+input NestedIntNullableFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntNullableFilter
+}
+
+input QuestionnaireRelationFilter {
+  is: QuestionnaireWhereInput
+  isNot: QuestionnaireWhereInput
+}
+
+input QuestionnaireWhereInput {
+  AND: [QuestionnaireWhereInput!]
+  OR: [QuestionnaireWhereInput!]
+  NOT: [QuestionnaireWhereInput!]
+  id: IntFilter
+  name: StringFilter
+  pages: PageListRelationFilter
+}
+
+input PageListRelationFilter {
+  every: PageWhereInput
+  some: PageWhereInput
+  none: PageWhereInput
+}
+
+input PageOrderByWithRelationInput {
+  id: SortOrder
+  title: SortOrder
+  questions: QuestionOrderByRelationAggregateInput
+  questionnaire: QuestionnaireOrderByWithRelationInput
+  questionnaireId: SortOrder
+  successor: PageOrderByWithRelationInput
+  predecessorId: SortOrder
+  predecessor: PageOrderByWithRelationInput
+}
+
+enum SortOrder {
+  asc
+  desc
+}
+
+input QuestionOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input QuestionnaireOrderByWithRelationInput {
+  id: SortOrder
+  name: SortOrder
+  pages: PageOrderByRelationAggregateInput
+}
+
+input PageOrderByRelationAggregateInput {
+  _count: SortOrder
+}
+
+input PageWhereUniqueInput {
+  id: Int
+  predecessorId: Int
+}
+
+enum PageScalarFieldEnum {
+  id
+  title
+  questionnaireId
+  predecessorId
+}
+
+type PageGroupBy {
+  id: Int!
+  title: String!
+  questionnaireId: Int!
+  predecessorId: Int
+  _count: PageCountAggregate
+  _avg: PageAvgAggregate
+  _sum: PageSumAggregate
+  _min: PageMinAggregate
+  _max: PageMaxAggregate
+}
+
+type PageCountAggregate {
+  id: Int!
+  title: Int!
+  questionnaireId: Int!
+  predecessorId: Int!
+  _all: Int!
+}
+
+type PageAvgAggregate {
+  id: Float
+  questionnaireId: Float
+  predecessorId: Float
+}
+
+type PageSumAggregate {
+  id: Int
+  questionnaireId: Int
+  predecessorId: Int
+}
+
+type PageMinAggregate {
+  id: Int
+  title: String
+  questionnaireId: Int
+  predecessorId: Int
+}
+
+type PageMaxAggregate {
+  id: Int
+  title: String
+  questionnaireId: Int
+  predecessorId: Int
+}
+
+input PageOrderByWithAggregationInput {
+  id: SortOrder
+  title: SortOrder
+  questionnaireId: SortOrder
+  predecessorId: SortOrder
+  _count: PageCountOrderByAggregateInput
+  _avg: PageAvgOrderByAggregateInput
+  _max: PageMaxOrderByAggregateInput
+  _min: PageMinOrderByAggregateInput
+  _sum: PageSumOrderByAggregateInput
+}
+
+input PageCountOrderByAggregateInput {
+  id: SortOrder
+  title: SortOrder
+  questionnaireId: SortOrder
+  predecessorId: SortOrder
+}
+
+input PageAvgOrderByAggregateInput {
+  id: SortOrder
+  questionnaireId: SortOrder
+  predecessorId: SortOrder
+}
+
+input PageMaxOrderByAggregateInput {
+  id: SortOrder
+  title: SortOrder
+  questionnaireId: SortOrder
+  predecessorId: SortOrder
+}
+
+input PageMinOrderByAggregateInput {
+  id: SortOrder
+  title: SortOrder
+  questionnaireId: SortOrder
+  predecessorId: SortOrder
+}
+
+input PageSumOrderByAggregateInput {
+  id: SortOrder
+  questionnaireId: SortOrder
+  predecessorId: SortOrder
+}
+
+input PageScalarWhereWithAggregatesInput {
+  AND: [PageScalarWhereWithAggregatesInput!]
+  OR: [PageScalarWhereWithAggregatesInput!]
+  NOT: [PageScalarWhereWithAggregatesInput!]
+  id: IntWithAggregatesFilter
+  title: StringWithAggregatesFilter
+  questionnaireId: IntWithAggregatesFilter
+  predecessorId: IntNullableWithAggregatesFilter
+}
+
+input IntWithAggregatesFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntWithAggregatesFilter
+  _count: NestedIntFilter
+  _avg: NestedFloatFilter
+  _sum: NestedIntFilter
+  _min: NestedIntFilter
+  _max: NestedIntFilter
+}
+
+input NestedIntWithAggregatesFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntWithAggregatesFilter
+  _count: NestedIntFilter
+  _avg: NestedFloatFilter
+  _sum: NestedIntFilter
+  _min: NestedIntFilter
+  _max: NestedIntFilter
+}
+
+input NestedFloatFilter {
+  equals: Float
+  in: [Float!]
+  notIn: [Float!]
+  lt: Float
+  lte: Float
+  gt: Float
+  gte: Float
+  not: NestedFloatFilter
+}
+
+input StringWithAggregatesFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  mode: QueryMode
+  not: NestedStringWithAggregatesFilter
+  _count: NestedIntFilter
+  _min: NestedStringFilter
+  _max: NestedStringFilter
+}
+
+input NestedStringWithAggregatesFilter {
+  equals: String
+  in: [String!]
+  notIn: [String!]
+  lt: String
+  lte: String
+  gt: String
+  gte: String
+  contains: String
+  startsWith: String
+  endsWith: String
+  not: NestedStringWithAggregatesFilter
+  _count: NestedIntFilter
+  _min: NestedStringFilter
+  _max: NestedStringFilter
+}
+
+input IntNullableWithAggregatesFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntNullableWithAggregatesFilter
+  _count: NestedIntNullableFilter
+  _avg: NestedFloatNullableFilter
+  _sum: NestedIntNullableFilter
+  _min: NestedIntNullableFilter
+  _max: NestedIntNullableFilter
+}
+
+input NestedIntNullableWithAggregatesFilter {
+  equals: Int
+  in: [Int!]
+  notIn: [Int!]
+  lt: Int
+  lte: Int
+  gt: Int
+  gte: Int
+  not: NestedIntNullableWithAggregatesFilter
+  _count: NestedIntNullableFilter
+  _avg: NestedFloatNullableFilter
+  _sum: NestedIntNullableFilter
+  _min: NestedIntNullableFilter
+  _max: NestedIntNullableFilter
+}
+
+input NestedFloatNullableFilter {
+  equals: Float
+  in: [Float!]
+  notIn: [Float!]
+  lt: Float
+  lte: Float
+  gt: Float
+  gte: Float
+  not: NestedFloatNullableFilter
+}
+
+type AggregatePage {
+  _count: PageCountAggregate
+  _avg: PageAvgAggregate
+  _sum: PageSumAggregate
+  _min: PageMinAggregate
+  _max: PageMaxAggregate
+}
+
+type Question {
+  id: Int!
+  pageId: Int!
+  type: QuestionType!
+  text: String!
+  choices: [String!]!
+  nextPageId: Int
+}
+
+input QuestionOrderByWithRelationInput {
+  id: SortOrder
+  page: PageOrderByWithRelationInput
+  pageId: SortOrder
+  type: SortOrder
+  text: SortOrder
+  choices: SortOrder
+  answer: AnswerOrderByWithRelationInput
+  nextPageId: SortOrder
+}
+
+input AnswerOrderByWithRelationInput {
+  id: SortOrder
+  questionId: SortOrder
+  Question: QuestionOrderByWithRelationInput
+  answers: SortOrder
+}
+
+input QuestionWhereUniqueInput {
+  id: Int
+}
+
+enum QuestionScalarFieldEnum {
+  id
+  pageId
+  type
+  text
+  choices
+  nextPageId
+}
+
+type QuestionGroupBy {
+  id: Int!
+  pageId: Int!
+  type: QuestionType!
+  text: String!
+  choices: [String!]
+  nextPageId: Int
+  _count: QuestionCountAggregate
+  _avg: QuestionAvgAggregate
+  _sum: QuestionSumAggregate
+  _min: QuestionMinAggregate
+  _max: QuestionMaxAggregate
+}
+
+type QuestionCountAggregate {
+  id: Int!
+  pageId: Int!
+  type: Int!
+  text: Int!
+  choices: Int!
+  nextPageId: Int!
+  _all: Int!
+}
+
+type QuestionAvgAggregate {
+  id: Float
+  pageId: Float
+  nextPageId: Float
+}
+
+type QuestionSumAggregate {
+  id: Int
+  pageId: Int
+  nextPageId: Int
+}
+
+type QuestionMinAggregate {
+  id: Int
+  pageId: Int
+  type: QuestionType
+  text: String
+  nextPageId: Int
+}
+
+type QuestionMaxAggregate {
+  id: Int
+  pageId: Int
+  type: QuestionType
+  text: String
+  nextPageId: Int
+}
+
+input QuestionOrderByWithAggregationInput {
+  id: SortOrder
+  pageId: SortOrder
+  type: SortOrder
+  text: SortOrder
+  choices: SortOrder
+  nextPageId: SortOrder
+  _count: QuestionCountOrderByAggregateInput
+  _avg: QuestionAvgOrderByAggregateInput
+  _max: QuestionMaxOrderByAggregateInput
+  _min: QuestionMinOrderByAggregateInput
+  _sum: QuestionSumOrderByAggregateInput
+}
+
+input QuestionCountOrderByAggregateInput {
+  id: SortOrder
+  pageId: SortOrder
+  type: SortOrder
+  text: SortOrder
+  choices: SortOrder
+  nextPageId: SortOrder
+}
+
+input QuestionAvgOrderByAggregateInput {
+  id: SortOrder
+  pageId: SortOrder
+  nextPageId: SortOrder
+}
+
+input QuestionMaxOrderByAggregateInput {
+  id: SortOrder
+  pageId: SortOrder
+  type: SortOrder
+  text: SortOrder
+  nextPageId: SortOrder
+}
+
+input QuestionMinOrderByAggregateInput {
+  id: SortOrder
+  pageId: SortOrder
+  type: SortOrder
+  text: SortOrder
+  nextPageId: SortOrder
+}
+
+input QuestionSumOrderByAggregateInput {
+  id: SortOrder
+  pageId: SortOrder
+  nextPageId: SortOrder
+}
+
+input QuestionScalarWhereWithAggregatesInput {
+  AND: [QuestionScalarWhereWithAggregatesInput!]
+  OR: [QuestionScalarWhereWithAggregatesInput!]
+  NOT: [QuestionScalarWhereWithAggregatesInput!]
+  id: IntWithAggregatesFilter
+  pageId: IntWithAggregatesFilter
+  type: EnumQuestionTypeWithAggregatesFilter
+  text: StringWithAggregatesFilter
+  choices: StringNullableListFilter
+  nextPageId: IntNullableWithAggregatesFilter
+}
+
+input EnumQuestionTypeWithAggregatesFilter {
+  equals: QuestionType
+  in: [QuestionType!]
+  notIn: [QuestionType!]
+  not: NestedEnumQuestionTypeWithAggregatesFilter
+  _count: NestedIntFilter
+  _min: NestedEnumQuestionTypeFilter
+  _max: NestedEnumQuestionTypeFilter
+}
+
+input NestedEnumQuestionTypeWithAggregatesFilter {
+  equals: QuestionType
+  in: [QuestionType!]
+  notIn: [QuestionType!]
+  not: NestedEnumQuestionTypeWithAggregatesFilter
+  _count: NestedIntFilter
+  _min: NestedEnumQuestionTypeFilter
+  _max: NestedEnumQuestionTypeFilter
+}
+
+type AggregateQuestion {
+  _count: QuestionCountAggregate
+  _avg: QuestionAvgAggregate
+  _sum: QuestionSumAggregate
+  _min: QuestionMinAggregate
+  _max: QuestionMaxAggregate
+}
+
+type Questionnaire {
+  id: Int!
+  name: String!
+  _count: QuestionnaireCount
+}
+
+type QuestionnaireCount {
+  pages: Int!
+}
+
+input QuestionnaireWhereUniqueInput {
+  id: Int
+}
+
+enum QuestionnaireScalarFieldEnum {
+  id
+  name
+}
+
+type QuestionnaireGroupBy {
+  id: Int!
+  name: String!
+  _count: QuestionnaireCountAggregate
+  _avg: QuestionnaireAvgAggregate
+  _sum: QuestionnaireSumAggregate
+  _min: QuestionnaireMinAggregate
+  _max: QuestionnaireMaxAggregate
+}
+
+type QuestionnaireCountAggregate {
+  id: Int!
+  name: Int!
+  _all: Int!
+}
+
+type QuestionnaireAvgAggregate {
+  id: Float
+}
+
+type QuestionnaireSumAggregate {
+  id: Int
+}
+
+type QuestionnaireMinAggregate {
+  id: Int
+  name: String
+}
+
+type QuestionnaireMaxAggregate {
+  id: Int
+  name: String
+}
+
+input QuestionnaireOrderByWithAggregationInput {
+  id: SortOrder
+  name: SortOrder
+  _count: QuestionnaireCountOrderByAggregateInput
+  _avg: QuestionnaireAvgOrderByAggregateInput
+  _max: QuestionnaireMaxOrderByAggregateInput
+  _min: QuestionnaireMinOrderByAggregateInput
+  _sum: QuestionnaireSumOrderByAggregateInput
+}
+
+input QuestionnaireCountOrderByAggregateInput {
+  id: SortOrder
+  name: SortOrder
+}
+
+input QuestionnaireAvgOrderByAggregateInput {
+  id: SortOrder
+}
+
+input QuestionnaireMaxOrderByAggregateInput {
+  id: SortOrder
+  name: SortOrder
+}
+
+input QuestionnaireMinOrderByAggregateInput {
+  id: SortOrder
+  name: SortOrder
+}
+
+input QuestionnaireSumOrderByAggregateInput {
+  id: SortOrder
+}
+
+input QuestionnaireScalarWhereWithAggregatesInput {
+  AND: [QuestionnaireScalarWhereWithAggregatesInput!]
+  OR: [QuestionnaireScalarWhereWithAggregatesInput!]
+  NOT: [QuestionnaireScalarWhereWithAggregatesInput!]
+  id: IntWithAggregatesFilter
+  name: StringWithAggregatesFilter
+}
+
+type AggregateQuestionnaire {
+  _count: QuestionnaireCountAggregate
+  _avg: QuestionnaireAvgAggregate
+  _sum: QuestionnaireSumAggregate
+  _min: QuestionnaireMinAggregate
+  _max: QuestionnaireMaxAggregate
+}
+
+type Answer {
+  id: Int!
+  questionId: Int!
+  answers: [String!]!
+}
+
+input AnswerWhereUniqueInput {
+  id: Int
+  questionId: Int
+}
+
+enum AnswerScalarFieldEnum {
+  id
+  questionId
+  answers
+}
+
+type AnswerGroupBy {
+  id: Int!
+  questionId: Int!
+  answers: [String!]
+  _count: AnswerCountAggregate
+  _avg: AnswerAvgAggregate
+  _sum: AnswerSumAggregate
+  _min: AnswerMinAggregate
+  _max: AnswerMaxAggregate
+}
+
+type AnswerCountAggregate {
+  id: Int!
+  questionId: Int!
+  answers: Int!
+  _all: Int!
+}
+
+type AnswerAvgAggregate {
+  id: Float
+  questionId: Float
+}
+
+type AnswerSumAggregate {
+  id: Int
+  questionId: Int
+}
+
+type AnswerMinAggregate {
+  id: Int
+  questionId: Int
+}
+
+type AnswerMaxAggregate {
+  id: Int
+  questionId: Int
+}
+
+input AnswerOrderByWithAggregationInput {
+  id: SortOrder
+  questionId: SortOrder
+  answers: SortOrder
+  _count: AnswerCountOrderByAggregateInput
+  _avg: AnswerAvgOrderByAggregateInput
+  _max: AnswerMaxOrderByAggregateInput
+  _min: AnswerMinOrderByAggregateInput
+  _sum: AnswerSumOrderByAggregateInput
+}
+
+input AnswerCountOrderByAggregateInput {
+  id: SortOrder
+  questionId: SortOrder
+  answers: SortOrder
+}
+
+input AnswerAvgOrderByAggregateInput {
+  id: SortOrder
+  questionId: SortOrder
+}
+
+input AnswerMaxOrderByAggregateInput {
+  id: SortOrder
+  questionId: SortOrder
+}
+
+input AnswerMinOrderByAggregateInput {
+  id: SortOrder
+  questionId: SortOrder
+}
+
+input AnswerSumOrderByAggregateInput {
+  id: SortOrder
+  questionId: SortOrder
+}
+
+input AnswerScalarWhereWithAggregatesInput {
+  AND: [AnswerScalarWhereWithAggregatesInput!]
+  OR: [AnswerScalarWhereWithAggregatesInput!]
+  NOT: [AnswerScalarWhereWithAggregatesInput!]
+  id: IntWithAggregatesFilter
+  questionId: IntWithAggregatesFilter
+  answers: StringNullableListFilter
+}
+
+type AggregateAnswer {
+  _count: AnswerCountAggregate
+  _avg: AnswerAvgAggregate
+  _sum: AnswerSumAggregate
+  _min: AnswerMinAggregate
+  _max: AnswerMaxAggregate
+}
+
+type Mutation {
+  createPage(data: PageCreateInput!): Page
+  createManyPage(data: [PageCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput
+  updatePage(data: PageUpdateInput!, where: PageWhereUniqueInput!): Page
+  updateManyPage(data: PageUpdateManyMutationInput!, where: PageWhereInput): AffectedRowsOutput
+  upsertPage(where: PageWhereUniqueInput!, create: PageCreateInput!, update: PageUpdateInput!): Page
+  deletePage(where: PageWhereUniqueInput!): Page
+  deleteManyPage(where: PageWhereInput): AffectedRowsOutput
+  createQuestion(data: QuestionCreateInput!): Question
+  createManyQuestion(data: [QuestionCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput
+  updateQuestion(data: QuestionUpdateInput!, where: QuestionWhereUniqueInput!): Question
+  updateManyQuestion(data: QuestionUpdateManyMutationInput!, where: QuestionWhereInput): AffectedRowsOutput
+  upsertQuestion(where: QuestionWhereUniqueInput!, create: QuestionCreateInput!, update: QuestionUpdateInput!): Question
+  deleteQuestion(where: QuestionWhereUniqueInput!): Question
+  deleteManyQuestion(where: QuestionWhereInput): AffectedRowsOutput
+  createQuestionnaire(data: QuestionnaireCreateInput!): Questionnaire
+  createManyQuestionnaire(data: [QuestionnaireCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput
+  updateQuestionnaire(data: QuestionnaireUpdateInput!, where: QuestionnaireWhereUniqueInput!): Questionnaire
+  updateManyQuestionnaire(data: QuestionnaireUpdateManyMutationInput!, where: QuestionnaireWhereInput): AffectedRowsOutput
+  upsertQuestionnaire(where: QuestionnaireWhereUniqueInput!, create: QuestionnaireCreateInput!, update: QuestionnaireUpdateInput!): Questionnaire
+  deleteQuestionnaire(where: QuestionnaireWhereUniqueInput!): Questionnaire
+  deleteManyQuestionnaire(where: QuestionnaireWhereInput): AffectedRowsOutput
+  createAnswer(data: AnswerCreateInput!): Answer
+  createManyAnswer(data: [AnswerCreateManyInput!]!, skipDuplicates: Boolean): AffectedRowsOutput
+  updateAnswer(data: AnswerUpdateInput!, where: AnswerWhereUniqueInput!): Answer
+  updateManyAnswer(data: AnswerUpdateManyMutationInput!, where: AnswerWhereInput): AffectedRowsOutput
+  upsertAnswer(where: AnswerWhereUniqueInput!, create: AnswerCreateInput!, update: AnswerUpdateInput!): Answer
+  deleteAnswer(where: AnswerWhereUniqueInput!): Answer
+  deleteManyAnswer(where: AnswerWhereInput): AffectedRowsOutput
+}
+
+input PageCreateInput {
+  title: String!
+  questions: QuestionCreateNestedManyWithoutPageInput
+  questionnaire: QuestionnaireCreateNestedOneWithoutPagesInput!
+  successor: PageCreateNestedOneWithoutPredecessorInput
+  predecessor: PageCreateNestedOneWithoutSuccessorInput
+}
+
+input QuestionCreateNestedManyWithoutPageInput {
+  create: [QuestionCreateWithoutPageInput!]
+  connectOrCreate: [QuestionCreateOrConnectWithoutPageInput!]
+  createMany: QuestionCreateManyPageInputEnvelope
+  connect: [QuestionWhereUniqueInput!]
+}
+
+input QuestionCreateWithoutPageInput {
+  type: QuestionType!
+  text: String!
+  choices: QuestionCreatechoicesInput
+  answer: AnswerCreateNestedOneWithoutQuestionInput
+  nextPageId: Int
+}
+
+input QuestionCreatechoicesInput {
+  set: [String!]!
+}
+
+input AnswerCreateNestedOneWithoutQuestionInput {
+  create: AnswerCreateWithoutQuestionInput
+  connectOrCreate: AnswerCreateOrConnectWithoutQuestionInput
+  connect: AnswerWhereUniqueInput
+}
+
+input AnswerCreateWithoutQuestionInput {
+  answers: AnswerCreateanswersInput
+}
+
+input AnswerCreateanswersInput {
+  set: [String!]!
+}
+
+input AnswerCreateOrConnectWithoutQuestionInput {
+  where: AnswerWhereUniqueInput!
+  create: AnswerCreateWithoutQuestionInput!
+}
+
+input QuestionCreateOrConnectWithoutPageInput {
+  where: QuestionWhereUniqueInput!
+  create: QuestionCreateWithoutPageInput!
+}
+
+input QuestionCreateManyPageInputEnvelope {
+  data: [QuestionCreateManyPageInput!]!
+  skipDuplicates: Boolean
+}
+
+input QuestionCreateManyPageInput {
+  id: Int
+  type: QuestionType!
+  text: String!
+  choices: QuestionCreatechoicesInput
+  nextPageId: Int
+}
+
+input QuestionnaireCreateNestedOneWithoutPagesInput {
+  create: QuestionnaireCreateWithoutPagesInput
+  connectOrCreate: QuestionnaireCreateOrConnectWithoutPagesInput
+  connect: QuestionnaireWhereUniqueInput
+}
+
+input QuestionnaireCreateWithoutPagesInput {
+  name: String!
+}
+
+input QuestionnaireCreateOrConnectWithoutPagesInput {
+  where: QuestionnaireWhereUniqueInput!
+  create: QuestionnaireCreateWithoutPagesInput!
+}
+
+input PageCreateNestedOneWithoutPredecessorInput {
+  create: PageCreateWithoutPredecessorInput
+  connectOrCreate: PageCreateOrConnectWithoutPredecessorInput
+  connect: PageWhereUniqueInput
+}
+
+input PageCreateWithoutPredecessorInput {
+  title: String!
+  questions: QuestionCreateNestedManyWithoutPageInput
+  questionnaire: QuestionnaireCreateNestedOneWithoutPagesInput!
+  successor: PageCreateNestedOneWithoutPredecessorInput
+}
+
+input PageCreateOrConnectWithoutPredecessorInput {
+  where: PageWhereUniqueInput!
+  create: PageCreateWithoutPredecessorInput!
+}
+
+input PageCreateNestedOneWithoutSuccessorInput {
+  create: PageCreateWithoutSuccessorInput
+  connectOrCreate: PageCreateOrConnectWithoutSuccessorInput
+  connect: PageWhereUniqueInput
+}
+
+input PageCreateWithoutSuccessorInput {
+  title: String!
+  questions: QuestionCreateNestedManyWithoutPageInput
+  questionnaire: QuestionnaireCreateNestedOneWithoutPagesInput!
+  predecessor: PageCreateNestedOneWithoutSuccessorInput
+}
+
+input PageCreateOrConnectWithoutSuccessorInput {
+  where: PageWhereUniqueInput!
+  create: PageCreateWithoutSuccessorInput!
+}
+
+type AffectedRowsOutput {
+  count: Int!
+}
+
+input PageCreateManyInput {
+  id: Int
+  title: String!
+  questionnaireId: Int!
+  predecessorId: Int
+}
+
+input PageUpdateInput {
+  title: StringFieldUpdateOperationsInput
+  questions: QuestionUpdateManyWithoutPageNestedInput
+  questionnaire: QuestionnaireUpdateOneRequiredWithoutPagesNestedInput
+  successor: PageUpdateOneWithoutPredecessorNestedInput
+  predecessor: PageUpdateOneWithoutSuccessorNestedInput
+}
+
+input StringFieldUpdateOperationsInput {
+  set: String
+}
+
+input QuestionUpdateManyWithoutPageNestedInput {
+  create: [QuestionCreateWithoutPageInput!]
+  connectOrCreate: [QuestionCreateOrConnectWithoutPageInput!]
+  upsert: [QuestionUpsertWithWhereUniqueWithoutPageInput!]
+  createMany: QuestionCreateManyPageInputEnvelope
+  set: [QuestionWhereUniqueInput!]
+  disconnect: [QuestionWhereUniqueInput!]
+  delete: [QuestionWhereUniqueInput!]
+  connect: [QuestionWhereUniqueInput!]
+  update: [QuestionUpdateWithWhereUniqueWithoutPageInput!]
+  updateMany: [QuestionUpdateManyWithWhereWithoutPageInput!]
+  deleteMany: [QuestionScalarWhereInput!]
+}
+
+input QuestionUpsertWithWhereUniqueWithoutPageInput {
+  where: QuestionWhereUniqueInput!
+  update: QuestionUpdateWithoutPageInput!
+  create: QuestionCreateWithoutPageInput!
+}
+
+input QuestionUpdateWithoutPageInput {
+  type: EnumQuestionTypeFieldUpdateOperationsInput
+  text: StringFieldUpdateOperationsInput
+  choices: QuestionUpdatechoicesInput
+  answer: AnswerUpdateOneWithoutQuestionNestedInput
+  nextPageId: NullableIntFieldUpdateOperationsInput
+}
+
+input EnumQuestionTypeFieldUpdateOperationsInput {
+  set: QuestionType
+}
+
+input QuestionUpdatechoicesInput {
+  set: [String!]
+  push: [String!]
+}
+
+input AnswerUpdateOneWithoutQuestionNestedInput {
+  create: AnswerCreateWithoutQuestionInput
+  connectOrCreate: AnswerCreateOrConnectWithoutQuestionInput
+  upsert: AnswerUpsertWithoutQuestionInput
+  disconnect: Boolean
+  delete: Boolean
+  connect: AnswerWhereUniqueInput
+  update: AnswerUpdateWithoutQuestionInput
+}
+
+input AnswerUpsertWithoutQuestionInput {
+  update: AnswerUpdateWithoutQuestionInput!
+  create: AnswerCreateWithoutQuestionInput!
+}
+
+input AnswerUpdateWithoutQuestionInput {
+  answers: AnswerUpdateanswersInput
+}
+
+input AnswerUpdateanswersInput {
+  set: [String!]
+  push: [String!]
+}
+
+input NullableIntFieldUpdateOperationsInput {
+  set: Int
+  increment: Int
+  decrement: Int
+  multiply: Int
+  divide: Int
+}
+
+input QuestionUpdateWithWhereUniqueWithoutPageInput {
+  where: QuestionWhereUniqueInput!
+  data: QuestionUpdateWithoutPageInput!
+}
+
+input QuestionUpdateManyWithWhereWithoutPageInput {
+  where: QuestionScalarWhereInput!
+  data: QuestionUpdateManyMutationInput!
+}
+
+input QuestionScalarWhereInput {
+  AND: [QuestionScalarWhereInput!]
+  OR: [QuestionScalarWhereInput!]
+  NOT: [QuestionScalarWhereInput!]
+  id: IntFilter
+  pageId: IntFilter
+  type: EnumQuestionTypeFilter
+  text: StringFilter
+  choices: StringNullableListFilter
+  nextPageId: IntNullableFilter
+}
+
+input QuestionUpdateManyMutationInput {
+  type: EnumQuestionTypeFieldUpdateOperationsInput
+  text: StringFieldUpdateOperationsInput
+  choices: QuestionUpdatechoicesInput
+  nextPageId: NullableIntFieldUpdateOperationsInput
+}
+
+input QuestionnaireUpdateOneRequiredWithoutPagesNestedInput {
+  create: QuestionnaireCreateWithoutPagesInput
+  connectOrCreate: QuestionnaireCreateOrConnectWithoutPagesInput
+  upsert: QuestionnaireUpsertWithoutPagesInput
+  connect: QuestionnaireWhereUniqueInput
+  update: QuestionnaireUpdateWithoutPagesInput
+}
+
+input QuestionnaireUpsertWithoutPagesInput {
+  update: QuestionnaireUpdateWithoutPagesInput!
+  create: QuestionnaireCreateWithoutPagesInput!
+}
+
+input QuestionnaireUpdateWithoutPagesInput {
+  name: StringFieldUpdateOperationsInput
+}
+
+input PageUpdateOneWithoutPredecessorNestedInput {
+  create: PageCreateWithoutPredecessorInput
+  connectOrCreate: PageCreateOrConnectWithoutPredecessorInput
+  upsert: PageUpsertWithoutPredecessorInput
+  disconnect: Boolean
+  delete: Boolean
+  connect: PageWhereUniqueInput
+  update: PageUpdateWithoutPredecessorInput
+}
+
+input PageUpsertWithoutPredecessorInput {
+  update: PageUpdateWithoutPredecessorInput!
+  create: PageCreateWithoutPredecessorInput!
+}
+
+input PageUpdateWithoutPredecessorInput {
+  title: StringFieldUpdateOperationsInput
+  questions: QuestionUpdateManyWithoutPageNestedInput
+  questionnaire: QuestionnaireUpdateOneRequiredWithoutPagesNestedInput
+  successor: PageUpdateOneWithoutPredecessorNestedInput
+}
+
+input PageUpdateOneWithoutSuccessorNestedInput {
+  create: PageCreateWithoutSuccessorInput
+  connectOrCreate: PageCreateOrConnectWithoutSuccessorInput
+  upsert: PageUpsertWithoutSuccessorInput
+  disconnect: Boolean
+  delete: Boolean
+  connect: PageWhereUniqueInput
+  update: PageUpdateWithoutSuccessorInput
+}
+
+input PageUpsertWithoutSuccessorInput {
+  update: PageUpdateWithoutSuccessorInput!
+  create: PageCreateWithoutSuccessorInput!
+}
+
+input PageUpdateWithoutSuccessorInput {
+  title: StringFieldUpdateOperationsInput
+  questions: QuestionUpdateManyWithoutPageNestedInput
+  questionnaire: QuestionnaireUpdateOneRequiredWithoutPagesNestedInput
+  predecessor: PageUpdateOneWithoutSuccessorNestedInput
+}
+
+input PageUpdateManyMutationInput {
+  title: StringFieldUpdateOperationsInput
+}
+
+input QuestionCreateInput {
+  page: PageCreateNestedOneWithoutQuestionsInput!
+  type: QuestionType!
+  text: String!
+  choices: QuestionCreatechoicesInput
+  answer: AnswerCreateNestedOneWithoutQuestionInput
+  nextPageId: Int
+}
+
+input PageCreateNestedOneWithoutQuestionsInput {
+  create: PageCreateWithoutQuestionsInput
+  connectOrCreate: PageCreateOrConnectWithoutQuestionsInput
+  connect: PageWhereUniqueInput
+}
+
+input PageCreateWithoutQuestionsInput {
+  title: String!
+  questionnaire: QuestionnaireCreateNestedOneWithoutPagesInput!
+  successor: PageCreateNestedOneWithoutPredecessorInput
+  predecessor: PageCreateNestedOneWithoutSuccessorInput
+}
+
+input PageCreateOrConnectWithoutQuestionsInput {
+  where: PageWhereUniqueInput!
+  create: PageCreateWithoutQuestionsInput!
+}
+
+input QuestionCreateManyInput {
+  id: Int
+  pageId: Int!
+  type: QuestionType!
+  text: String!
+  choices: QuestionCreatechoicesInput
+  nextPageId: Int
+}
+
+input QuestionUpdateInput {
+  page: PageUpdateOneRequiredWithoutQuestionsNestedInput
+  type: EnumQuestionTypeFieldUpdateOperationsInput
+  text: StringFieldUpdateOperationsInput
+  choices: QuestionUpdatechoicesInput
+  answer: AnswerUpdateOneWithoutQuestionNestedInput
+  nextPageId: NullableIntFieldUpdateOperationsInput
+}
+
+input PageUpdateOneRequiredWithoutQuestionsNestedInput {
+  create: PageCreateWithoutQuestionsInput
+  connectOrCreate: PageCreateOrConnectWithoutQuestionsInput
+  upsert: PageUpsertWithoutQuestionsInput
+  connect: PageWhereUniqueInput
+  update: PageUpdateWithoutQuestionsInput
+}
+
+input PageUpsertWithoutQuestionsInput {
+  update: PageUpdateWithoutQuestionsInput!
+  create: PageCreateWithoutQuestionsInput!
+}
+
+input PageUpdateWithoutQuestionsInput {
+  title: StringFieldUpdateOperationsInput
+  questionnaire: QuestionnaireUpdateOneRequiredWithoutPagesNestedInput
+  successor: PageUpdateOneWithoutPredecessorNestedInput
+  predecessor: PageUpdateOneWithoutSuccessorNestedInput
+}
+
+input QuestionnaireCreateInput {
+  name: String!
+  pages: PageCreateNestedManyWithoutQuestionnaireInput
+}
+
+input PageCreateNestedManyWithoutQuestionnaireInput {
+  create: [PageCreateWithoutQuestionnaireInput!]
+  connectOrCreate: [PageCreateOrConnectWithoutQuestionnaireInput!]
+  createMany: PageCreateManyQuestionnaireInputEnvelope
+  connect: [PageWhereUniqueInput!]
+}
+
+input PageCreateWithoutQuestionnaireInput {
+  title: String!
+  questions: QuestionCreateNestedManyWithoutPageInput
+  successor: PageCreateNestedOneWithoutPredecessorInput
+  predecessor: PageCreateNestedOneWithoutSuccessorInput
+}
+
+input PageCreateOrConnectWithoutQuestionnaireInput {
+  where: PageWhereUniqueInput!
+  create: PageCreateWithoutQuestionnaireInput!
+}
+
+input PageCreateManyQuestionnaireInputEnvelope {
+  data: [PageCreateManyQuestionnaireInput!]!
+  skipDuplicates: Boolean
+}
+
+input PageCreateManyQuestionnaireInput {
+  id: Int
+  title: String!
+  predecessorId: Int
+}
+
+input QuestionnaireCreateManyInput {
+  id: Int
+  name: String!
+}
+
+input QuestionnaireUpdateInput {
+  name: StringFieldUpdateOperationsInput
+  pages: PageUpdateManyWithoutQuestionnaireNestedInput
+}
+
+input PageUpdateManyWithoutQuestionnaireNestedInput {
+  create: [PageCreateWithoutQuestionnaireInput!]
+  connectOrCreate: [PageCreateOrConnectWithoutQuestionnaireInput!]
+  upsert: [PageUpsertWithWhereUniqueWithoutQuestionnaireInput!]
+  createMany: PageCreateManyQuestionnaireInputEnvelope
+  set: [PageWhereUniqueInput!]
+  disconnect: [PageWhereUniqueInput!]
+  delete: [PageWhereUniqueInput!]
+  connect: [PageWhereUniqueInput!]
+  update: [PageUpdateWithWhereUniqueWithoutQuestionnaireInput!]
+  updateMany: [PageUpdateManyWithWhereWithoutQuestionnaireInput!]
+  deleteMany: [PageScalarWhereInput!]
+}
+
+input PageUpsertWithWhereUniqueWithoutQuestionnaireInput {
+  where: PageWhereUniqueInput!
+  update: PageUpdateWithoutQuestionnaireInput!
+  create: PageCreateWithoutQuestionnaireInput!
+}
+
+input PageUpdateWithoutQuestionnaireInput {
+  title: StringFieldUpdateOperationsInput
+  questions: QuestionUpdateManyWithoutPageNestedInput
+  successor: PageUpdateOneWithoutPredecessorNestedInput
+  predecessor: PageUpdateOneWithoutSuccessorNestedInput
+}
+
+input PageUpdateWithWhereUniqueWithoutQuestionnaireInput {
+  where: PageWhereUniqueInput!
+  data: PageUpdateWithoutQuestionnaireInput!
+}
+
+input PageUpdateManyWithWhereWithoutQuestionnaireInput {
+  where: PageScalarWhereInput!
+  data: PageUpdateManyMutationInput!
+}
+
+input PageScalarWhereInput {
+  AND: [PageScalarWhereInput!]
+  OR: [PageScalarWhereInput!]
+  NOT: [PageScalarWhereInput!]
+  id: IntFilter
+  title: StringFilter
+  questionnaireId: IntFilter
+  predecessorId: IntNullableFilter
+}
+
+input QuestionnaireUpdateManyMutationInput {
+  name: StringFieldUpdateOperationsInput
+}
+
+input AnswerCreateInput {
+  Question: QuestionCreateNestedOneWithoutAnswerInput!
+  answers: AnswerCreateanswersInput
+}
+
+input QuestionCreateNestedOneWithoutAnswerInput {
+  create: QuestionCreateWithoutAnswerInput
+  connectOrCreate: QuestionCreateOrConnectWithoutAnswerInput
+  connect: QuestionWhereUniqueInput
+}
+
+input QuestionCreateWithoutAnswerInput {
+  page: PageCreateNestedOneWithoutQuestionsInput!
+  type: QuestionType!
+  text: String!
+  choices: QuestionCreatechoicesInput
+  nextPageId: Int
+}
+
+input QuestionCreateOrConnectWithoutAnswerInput {
+  where: QuestionWhereUniqueInput!
+  create: QuestionCreateWithoutAnswerInput!
+}
+
+input AnswerCreateManyInput {
+  id: Int
+  questionId: Int!
+  answers: AnswerCreateanswersInput
+}
+
+input AnswerUpdateInput {
+  Question: QuestionUpdateOneRequiredWithoutAnswerNestedInput
+  answers: AnswerUpdateanswersInput
+}
+
+input QuestionUpdateOneRequiredWithoutAnswerNestedInput {
+  create: QuestionCreateWithoutAnswerInput
+  connectOrCreate: QuestionCreateOrConnectWithoutAnswerInput
+  upsert: QuestionUpsertWithoutAnswerInput
+  connect: QuestionWhereUniqueInput
+  update: QuestionUpdateWithoutAnswerInput
+}
+
+input QuestionUpsertWithoutAnswerInput {
+  update: QuestionUpdateWithoutAnswerInput!
+  create: QuestionCreateWithoutAnswerInput!
+}
+
+input QuestionUpdateWithoutAnswerInput {
+  page: PageUpdateOneRequiredWithoutQuestionsNestedInput
+  type: EnumQuestionTypeFieldUpdateOperationsInput
+  text: StringFieldUpdateOperationsInput
+  choices: QuestionUpdatechoicesInput
+  nextPageId: NullableIntFieldUpdateOperationsInput
+}
+
+input AnswerUpdateManyMutationInput {
+  answers: AnswerUpdateanswersInput
+}

@@ -15,7 +15,8 @@ const prisma = new PrismaClient({
     ResolversModule,
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
-      autoSchemaFile: '../graphql/schema/schema.graphql',
+      // autoSchemaFile: 'libs/resolvers/src/lib/schema/schema.graphql',
+      autoSchemaFile: true,
       context: ({ req }) => ({ req, prisma }),
     }),
   ],
