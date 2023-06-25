@@ -12,6 +12,7 @@
     "prisma:generate": "npx prisma generate",
     "prisma:migrate": "npx prisma migrate dev",
     "nest:generate:library": "npx nx g @nx/nest:library",
+    "ng:component": "npx nx list @nx/angular",
     "codegen": "graphql-codegen --config libs/ui/src/lib/codegen.ts"
   },
   "private": true,
@@ -26,6 +27,7 @@
     "@angular/platform-browser-dynamic": "~16.1.0",
     "@angular/router": "~16.1.0",
     "@apollo/client": "^3.7.16",
+    "@apollo/sandbox": "^2.5.0",
     "@apollo/server": "^4.7.4",
     "@as-integrations/fastify": "^2.0.0",
     "@nestjs/apollo": "^12.0.3",

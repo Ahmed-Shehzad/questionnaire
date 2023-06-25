@@ -52,7 +52,7 @@ export function createDefaultApollo(
 
   // create http
   const http = httpLink.create({
-    uri: 'http://localhost:3001/graphql',
+    uri: 'http://localhost:3000/graphql',
   });
 
   return {

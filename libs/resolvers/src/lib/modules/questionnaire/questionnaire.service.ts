@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Injectable } from '@nestjs/common';
 import { Prisma } from '@prisma/client';
-import { PrismaService } from '../../../../../../apps/api/src/prisma.service';
+import { PrismaService } from '../../prisma.service';
 
 @Injectable()
 export class QuestionnaireService {
