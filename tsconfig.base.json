@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@foxbase/resolvers": ["libs/resolvers/src/index.ts"],
       "@foxbase/ui": ["libs/ui/src/index.ts"]
     }
   },

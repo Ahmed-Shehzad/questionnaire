@@ -3,15 +3,15 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "serve:ui": "npx nx run foxbase:serve",
-    "build:ui": "npx nx run foxbase:build",
+    "serve:ui": "npx nx run foxbase:serve --verbose",
+    "build:ui": "npx nx run foxbase:build --verbose",
     "serve:api": "npx nx run api:serve --verbose",
-    "build:api": "npx nx run api:build",
+    "build:api": "npx nx run api:build --verbose",
     "prisma:studio": "npx prisma studio",
     "prisma:seed": "npx prisma db seed",
     "prisma:generate": "npx prisma generate",
     "prisma:migrate": "npx prisma migrate dev",
-    "next:generate:library": "npx nx g @nx/nest:library"
+    "nest:generate:library": "npx nx g @nx/nest:library"
   },
   "private": true,
   "dependencies": {
@@ -38,6 +38,7 @@
     "nestjs-prisma-graphql-crud-gen": "^1.0.4",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },
   "devDependencies": {
