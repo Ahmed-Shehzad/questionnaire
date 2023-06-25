@@ -25,10 +25,10 @@ generator erd {
   output   = "../apps/api/src/schema/docs/erd.svg"
 }
 
-generator custom_generator {
-  provider = "nestjs-prisma-graphql-crud-gen"
-  output   = "../libs/resolvers/src/lib/modules"
-}
+// generator custom_generator {
+//   provider = "nestjs-prisma-graphql-crud-gen"
+//   output   = "../libs/resolvers/src/lib/modules"
+// }
 
 model Questionnaire {
   id    Int    @id @default(autoincrement())
