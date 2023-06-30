@@ -4,6 +4,5 @@ import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   imports: [CommonModule, GraphQLModule],
-  exports: [CommonModule, GraphQLModule],
 })
-export class UiModule {}
+export class CodegenModule {}

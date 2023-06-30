@@ -1,3 +1,4 @@
+import { ApolloServerPluginInlineTrace } from '@apollo/server/plugin/inlineTrace';
 import { PrismaService, ResolversModule } from '@foxbase/resolvers';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
@@ -16,7 +17,9 @@ const prisma = new PrismaService({
       driver: ApolloDriver,
       // autoSchemaFile: 'libs/resolvers/src/lib/schema/schema.graphql',
       autoSchemaFile: true,
-      context: ({ req }) => ({ req, prisma }),
+      plugins: [ApolloServerPluginInlineTrace()],
+      csrfPrevention: true,
+      // context: ({ req }) => ({ req, prisma }),
     }),
   ],
   controllers: [AppController],

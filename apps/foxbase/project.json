@@ -8,15 +8,25 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/foxbase",
         "index": "apps/foxbase/src/index.html",
         "main": "apps/foxbase/src/main.ts",
-        "polyfills": ["zone.js"],
+        "polyfills": [
+          "zone.js"
+        ],
         "tsConfig": "apps/foxbase/tsconfig.app.json",
-        "assets": ["apps/foxbase/src/favicon.ico", "apps/foxbase/src/assets"],
-        "styles": ["apps/foxbase/src/styles.css"],
+        "assets": [
+          "apps/foxbase/src/favicon.ico",
+          "apps/foxbase/src/assets"
+        ],
+        "styles": [
+          "@angular/material/prebuilt-themes/indigo-pink.css",
+          "apps/foxbase/src/styles.css"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -66,14 +76,21 @@
     },
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/foxbase/**/*.ts", "apps/foxbase/**/*.html"]
+        "lintFilePatterns": [
+          "apps/foxbase/**/*.ts",
+          "apps/foxbase/**/*.html"
+        ]
       }
     },
     "test": {
       "executor": "@nx/jest:jest",
-      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
       "options": {
         "jestConfig": "apps/foxbase/jest.config.ts",
         "passWithNoTests": true

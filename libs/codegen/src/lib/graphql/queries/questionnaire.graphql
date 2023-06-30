@@ -1,0 +1,17 @@
+query findUniqueQuestionnaire($where: QuestionnaireWhereUniqueInput!) {
+	findUniqueQuestionnaire(where: $where) {
+    id
+    name
+	}
+}
+
+input QuestionnaireWhereUniqueInput {
+  id: Int
+}
+
+query findManyQuestionnaire {
+  findManyQuestionnaire {
+    id
+    name
+  }
+}

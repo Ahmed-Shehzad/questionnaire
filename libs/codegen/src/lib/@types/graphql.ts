@@ -1,18 +1,31 @@
-import { gql } from 'apollo-angular';
+import { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
-export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+export type Exact<T extends { [key: string]: unknown }> = {
+  [K in keyof T]: T[K];
+};
+export type MakeOptional<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]?: Maybe<T[SubKey]>;
+};
+export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & {
+  [SubKey in K]: Maybe<T[SubKey]>;
+};
+export type MakeEmpty<
+  T extends { [key: string]: unknown },
+  K extends keyof T
+> = { [_ in K]?: never };
+export type Incremental<T> =
+  | T
+  | {
+      [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never;
+    };
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
-  ID: { input: string; output: string; }
-  String: { input: string; output: string; }
-  Boolean: { input: boolean; output: boolean; }
-  Int: { input: number; output: number; }
-  Float: { input: number; output: number; }
+  ID: { input: string; output: string };
+  String: { input: string; output: string };
+  Boolean: { input: boolean; output: boolean };
+  Int: { input: number; output: number };
+  Float: { input: number; output: number };
 };
 
 export type AffectedRowsOutput = {
@@ -178,7 +191,7 @@ export type AnswerRelationFilter = {
 export enum AnswerScalarFieldEnum {
   Answers = 'answers',
   Id = 'id',
-  QuestionId = 'questionId'
+  QuestionId = 'questionId',
 }
 
 export type AnswerScalarWhereWithAggregatesInput = {
@@ -356,138 +369,113 @@ export type Mutation = {
   upsertQuestionnaire?: Maybe<Questionnaire>;
 };
 
-
 export type MutationCreateAnswerArgs = {
   data: AnswerCreateInput;
 };
-
 
 export type MutationCreateManyAnswerArgs = {
   data: Array<AnswerCreateManyInput>;
   skipDuplicates?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-
 export type MutationCreateManyPageArgs = {
   data: Array<PageCreateManyInput>;
   skipDuplicates?: InputMaybe<Scalars['Boolean']['input']>;
 };
-
 
 export type MutationCreateManyQuestionArgs = {
   data: Array<QuestionCreateManyInput>;
   skipDuplicates?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-
 export type MutationCreateManyQuestionnaireArgs = {
   data: Array<QuestionnaireCreateManyInput>;
   skipDuplicates?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
-
 export type MutationCreatePageArgs = {
   data: PageCreateInput;
 };
-
 
 export type MutationCreateQuestionArgs = {
   data: QuestionCreateInput;
 };
 
-
 export type MutationCreateQuestionnaireArgs = {
   data: QuestionnaireCreateInput;
 };
-
 
 export type MutationDeleteAnswerArgs = {
   where: AnswerWhereUniqueInput;
 };
 
-
 export type MutationDeleteManyAnswerArgs = {
   where?: InputMaybe<AnswerWhereInput>;
 };
-
 
 export type MutationDeleteManyPageArgs = {
   where?: InputMaybe<PageWhereInput>;
 };
 
-
 export type MutationDeleteManyQuestionArgs = {
   where?: InputMaybe<QuestionWhereInput>;
 };
-
 
 export type MutationDeleteManyQuestionnaireArgs = {
   where?: InputMaybe<QuestionnaireWhereInput>;
 };
 
-
 export type MutationDeletePageArgs = {
   where: PageWhereUniqueInput;
 };
-
 
 export type MutationDeleteQuestionArgs = {
   where: QuestionWhereUniqueInput;
 };
 
-
 export type MutationDeleteQuestionnaireArgs = {
   where: QuestionnaireWhereUniqueInput;
 };
-
 
 export type MutationUpdateAnswerArgs = {
   data: AnswerUpdateInput;
   where: AnswerWhereUniqueInput;
 };
 
-
 export type MutationUpdateManyAnswerArgs = {
   data: AnswerUpdateManyMutationInput;
   where?: InputMaybe<AnswerWhereInput>;
 };
-
 
 export type MutationUpdateManyPageArgs = {
   data: PageUpdateManyMutationInput;
   where?: InputMaybe<PageWhereInput>;
 };
 
-
 export type MutationUpdateManyQuestionArgs = {
   data: QuestionUpdateManyMutationInput;
   where?: InputMaybe<QuestionWhereInput>;
 };
-
 
 export type MutationUpdateManyQuestionnaireArgs = {
   data: QuestionnaireUpdateManyMutationInput;
   where?: InputMaybe<QuestionnaireWhereInput>;
 };
 
-
 export type MutationUpdatePageArgs = {
   data: PageUpdateInput;
   where: PageWhereUniqueInput;
 };
-
 
 export type MutationUpdateQuestionArgs = {
   data: QuestionUpdateInput;
   where: QuestionWhereUniqueInput;
 };
 
-
 export type MutationUpdateQuestionnaireArgs = {
   data: QuestionnaireUpdateInput;
   where: QuestionnaireWhereUniqueInput;
 };
-
 
 export type MutationUpsertAnswerArgs = {
   create: AnswerCreateInput;
@@ -495,20 +483,17 @@ export type MutationUpsertAnswerArgs = {
   where: AnswerWhereUniqueInput;
 };
 
-
 export type MutationUpsertPageArgs = {
   create: PageCreateInput;
   update: PageUpdateInput;
   where: PageWhereUniqueInput;
 };
 
-
 export type MutationUpsertQuestionArgs = {
   create: QuestionCreateInput;
   update: QuestionUpdateInput;
   where: QuestionWhereUniqueInput;
 };
-
 
 export type MutationUpsertQuestionnaireArgs = {
   create: QuestionnaireCreateInput;
@@ -719,7 +704,9 @@ export type PageCreateManyQuestionnaireInputEnvelope = {
 
 export type PageCreateNestedManyWithoutQuestionnaireInput = {
   connect?: InputMaybe<Array<PageWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<PageCreateOrConnectWithoutQuestionnaireInput>>;
+  connectOrCreate?: InputMaybe<
+    Array<PageCreateOrConnectWithoutQuestionnaireInput>
+  >;
   create?: InputMaybe<Array<PageCreateWithoutQuestionnaireInput>>;
   createMany?: InputMaybe<PageCreateManyQuestionnaireInputEnvelope>;
 };
@@ -875,7 +862,7 @@ export enum PageScalarFieldEnum {
   Id = 'id',
   PredecessorId = 'predecessorId',
   QuestionnaireId = 'questionnaireId',
-  Title = 'title'
+  Title = 'title',
 }
 
 export type PageScalarWhereInput = {
@@ -930,16 +917,24 @@ export type PageUpdateManyWithWhereWithoutQuestionnaireInput = {
 
 export type PageUpdateManyWithoutQuestionnaireNestedInput = {
   connect?: InputMaybe<Array<PageWhereUniqueInput>>;
-  connectOrCreate?: InputMaybe<Array<PageCreateOrConnectWithoutQuestionnaireInput>>;
+  connectOrCreate?: InputMaybe<
+    Array<PageCreateOrConnectWithoutQuestionnaireInput>
+  >;
   create?: InputMaybe<Array<PageCreateWithoutQuestionnaireInput>>;
   createMany?: InputMaybe<PageCreateManyQuestionnaireInputEnvelope>;
   delete?: InputMaybe<Array<PageWhereUniqueInput>>;
   deleteMany?: InputMaybe<Array<PageScalarWhereInput>>;
   disconnect?: InputMaybe<Array<PageWhereUniqueInput>>;
   set?: InputMaybe<Array<PageWhereUniqueInput>>;
-  update?: InputMaybe<Array<PageUpdateWithWhereUniqueWithoutQuestionnaireInput>>;
-  updateMany?: InputMaybe<Array<PageUpdateManyWithWhereWithoutQuestionnaireInput>>;
-  upsert?: InputMaybe<Array<PageUpsertWithWhereUniqueWithoutQuestionnaireInput>>;
+  update?: InputMaybe<
+    Array<PageUpdateWithWhereUniqueWithoutQuestionnaireInput>
+  >;
+  updateMany?: InputMaybe<
+    Array<PageUpdateManyWithWhereWithoutQuestionnaireInput>
+  >;
+  upsert?: InputMaybe<
+    Array<PageUpsertWithWhereUniqueWithoutQuestionnaireInput>
+  >;
 };
 
 export type PageUpdateOneRequiredWithoutQuestionsNestedInput = {
@@ -1067,7 +1062,6 @@ export type Query = {
   groupByQuestionnaire: Array<QuestionnaireGroupBy>;
 };
 
-
 export type QueryAggregateAnswerArgs = {
   cursor?: InputMaybe<AnswerWhereUniqueInput>;
   orderBy?: InputMaybe<Array<AnswerOrderByWithRelationInput>>;
@@ -1075,7 +1069,6 @@ export type QueryAggregateAnswerArgs = {
   take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<AnswerWhereInput>;
 };
-
 
 export type QueryAggregatePageArgs = {
   cursor?: InputMaybe<PageWhereUniqueInput>;
@@ -1085,7 +1078,6 @@ export type QueryAggregatePageArgs = {
   where?: InputMaybe<PageWhereInput>;
 };
 
-
 export type QueryAggregateQuestionArgs = {
   cursor?: InputMaybe<QuestionWhereUniqueInput>;
   orderBy?: InputMaybe<Array<QuestionOrderByWithRelationInput>>;
@@ -1094,7 +1086,6 @@ export type QueryAggregateQuestionArgs = {
   where?: InputMaybe<QuestionWhereInput>;
 };
 
-
 export type QueryAggregateQuestionnaireArgs = {
   cursor?: InputMaybe<QuestionnaireWhereUniqueInput>;
   orderBy?: InputMaybe<Array<QuestionnaireOrderByWithRelationInput>>;
@@ -1102,7 +1093,6 @@ export type QueryAggregateQuestionnaireArgs = {
   take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<QuestionnaireWhereInput>;
 };
-
 
 export type QueryFindFirstAnswerArgs = {
   cursor?: InputMaybe<AnswerWhereUniqueInput>;
@@ -1113,7 +1103,6 @@ export type QueryFindFirstAnswerArgs = {
   where?: InputMaybe<AnswerWhereInput>;
 };
 
-
 export type QueryFindFirstPageArgs = {
   cursor?: InputMaybe<PageWhereUniqueInput>;
   distinct?: InputMaybe<Array<PageScalarFieldEnum>>;
@@ -1122,7 +1111,6 @@ export type QueryFindFirstPageArgs = {
   take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<PageWhereInput>;
 };
-
 
 export type QueryFindFirstQuestionArgs = {
   cursor?: InputMaybe<QuestionWhereUniqueInput>;
@@ -1133,7 +1121,6 @@ export type QueryFindFirstQuestionArgs = {
   where?: InputMaybe<QuestionWhereInput>;
 };
 
-
 export type QueryFindFirstQuestionnaireArgs = {
   cursor?: InputMaybe<QuestionnaireWhereUniqueInput>;
   distinct?: InputMaybe<Array<QuestionnaireScalarFieldEnum>>;
@@ -1142,7 +1129,6 @@ export type QueryFindFirstQuestionnaireArgs = {
   take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<QuestionnaireWhereInput>;
 };
-
 
 export type QueryFindManyAnswerArgs = {
   cursor?: InputMaybe<AnswerWhereUniqueInput>;
@@ -1153,7 +1139,6 @@ export type QueryFindManyAnswerArgs = {
   where?: InputMaybe<AnswerWhereInput>;
 };
 
-
 export type QueryFindManyPageArgs = {
   cursor?: InputMaybe<PageWhereUniqueInput>;
   distinct?: InputMaybe<Array<PageScalarFieldEnum>>;
@@ -1162,7 +1147,6 @@ export type QueryFindManyPageArgs = {
   take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<PageWhereInput>;
 };
-
 
 export type QueryFindManyQuestionArgs = {
   cursor?: InputMaybe<QuestionWhereUniqueInput>;
@@ -1173,7 +1157,6 @@ export type QueryFindManyQuestionArgs = {
   where?: InputMaybe<QuestionWhereInput>;
 };
 
-
 export type QueryFindManyQuestionnaireArgs = {
   cursor?: InputMaybe<QuestionnaireWhereUniqueInput>;
   distinct?: InputMaybe<Array<QuestionnaireScalarFieldEnum>>;
@@ -1183,26 +1166,21 @@ export type QueryFindManyQuestionnaireArgs = {
   where?: InputMaybe<QuestionnaireWhereInput>;
 };
 
-
 export type QueryFindUniqueAnswerArgs = {
   where: AnswerWhereUniqueInput;
 };
-
 
 export type QueryFindUniquePageArgs = {
   where: PageWhereUniqueInput;
 };
 
-
 export type QueryFindUniqueQuestionArgs = {
   where: QuestionWhereUniqueInput;
 };
 
-
 export type QueryFindUniqueQuestionnaireArgs = {
   where: QuestionnaireWhereUniqueInput;
 };
-
 
 export type QueryGroupByAnswerArgs = {
   by: Array<AnswerScalarFieldEnum>;
@@ -1213,7 +1191,6 @@ export type QueryGroupByAnswerArgs = {
   where?: InputMaybe<AnswerWhereInput>;
 };
 
-
 export type QueryGroupByPageArgs = {
   by: Array<PageScalarFieldEnum>;
   having?: InputMaybe<PageScalarWhereWithAggregatesInput>;
@@ -1223,7 +1200,6 @@ export type QueryGroupByPageArgs = {
   where?: InputMaybe<PageWhereInput>;
 };
 
-
 export type QueryGroupByQuestionArgs = {
   by: Array<QuestionScalarFieldEnum>;
   having?: InputMaybe<QuestionScalarWhereWithAggregatesInput>;
@@ -1232,7 +1208,6 @@ export type QueryGroupByQuestionArgs = {
   take?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<QuestionWhereInput>;
 };
-
 
 export type QueryGroupByQuestionnaireArgs = {
   by: Array<QuestionnaireScalarFieldEnum>;
@@ -1245,7 +1220,7 @@ export type QueryGroupByQuestionnaireArgs = {
 
 export enum QueryMode {
   Default = 'default',
-  Insensitive = 'insensitive'
+  Insensitive = 'insensitive',
 }
 
 export type Question = {
@@ -1460,7 +1435,7 @@ export enum QuestionScalarFieldEnum {
   NextPageId = 'nextPageId',
   PageId = 'pageId',
   Text = 'text',
-  Type = 'type'
+  Type = 'type',
 }
 
 export type QuestionScalarWhereInput = {
@@ -1503,7 +1478,7 @@ export type QuestionSumOrderByAggregateInput = {
 export enum QuestionType {
   MultipleChoice = 'MULTIPLE_CHOICE',
   SingleChoice = 'SINGLE_CHOICE',
-  Text = 'TEXT'
+  Text = 'TEXT',
 }
 
 export type QuestionUpdateInput = {
@@ -1718,7 +1693,7 @@ export type QuestionnaireRelationFilter = {
 
 export enum QuestionnaireScalarFieldEnum {
   Id = 'id',
-  Name = 'name'
+  Name = 'name',
 }
 
 export type QuestionnaireScalarWhereWithAggregatesInput = {
@@ -1779,7 +1754,7 @@ export type QuestionnaireWhereUniqueInput = {
 
 export enum SortOrder {
   Asc = 'asc',
-  Desc = 'desc'
+  Desc = 'desc',
 }
 
 export type StringFieldUpdateOperationsInput = {
@@ -1826,3 +1801,114 @@ export type StringWithAggregatesFilter = {
   notIn?: InputMaybe<Array<Scalars['String']['input']>>;
   startsWith?: InputMaybe<Scalars['String']['input']>;
 };
+
+export type FindUniqueQuestionnaireQueryVariables = Exact<{
+  where: QuestionnaireWhereUniqueInput;
+}>;
+
+export type FindUniqueQuestionnaireQuery = {
+  __typename?: 'Query';
+  findUniqueQuestionnaire: {
+    __typename?: 'Questionnaire';
+    id: number;
+    name: string;
+  };
+};
+
+export type FindManyQuestionnaireQueryVariables = Exact<{
+  [key: string]: never;
+}>;
+
+export type FindManyQuestionnaireQuery = {
+  __typename?: 'Query';
+  findManyQuestionnaire: Array<{
+    __typename?: 'Questionnaire';
+    id: number;
+    name: string;
+  }>;
+};
+
+export const FindUniqueQuestionnaireDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'findUniqueQuestionnaire' },
+      variableDefinitions: [
+        {
+          kind: 'VariableDefinition',
+          variable: {
+            kind: 'Variable',
+            name: { kind: 'Name', value: 'where' },
+          },
+          type: {
+            kind: 'NonNullType',
+            type: {
+              kind: 'NamedType',
+              name: { kind: 'Name', value: 'QuestionnaireWhereUniqueInput' },
+            },
+          },
+        },
+      ],
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'findUniqueQuestionnaire' },
+            arguments: [
+              {
+                kind: 'Argument',
+                name: { kind: 'Name', value: 'where' },
+                value: {
+                  kind: 'Variable',
+                  name: { kind: 'Name', value: 'where' },
+                },
+              },
+            ],
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  FindUniqueQuestionnaireQuery,
+  FindUniqueQuestionnaireQueryVariables
+>;
+export const FindManyQuestionnaireDocument = {
+  kind: 'Document',
+  definitions: [
+    {
+      kind: 'OperationDefinition',
+      operation: 'query',
+      name: { kind: 'Name', value: 'findManyQuestionnaire' },
+      selectionSet: {
+        kind: 'SelectionSet',
+        selections: [
+          {
+            kind: 'Field',
+            name: { kind: 'Name', value: 'findManyQuestionnaire' },
+            selectionSet: {
+              kind: 'SelectionSet',
+              selections: [
+                { kind: 'Field', name: { kind: 'Name', value: 'id' } },
+                { kind: 'Field', name: { kind: 'Name', value: 'name' } },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  ],
+} as unknown as DocumentNode<
+  FindManyQuestionnaireQuery,
+  FindManyQuestionnaireQueryVariables
+>;

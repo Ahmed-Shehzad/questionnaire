@@ -13,13 +13,14 @@ async function bootstrap() {
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
   app.enableCors({
-    origin: 'https://studio.apollographql.com',
+    origin: ['https://studio.apollographql.com', 'http://localhost:4200'],
   });
   const port = process.env.PORT || 3000;
   app.listen(port);
   Logger.log(
     `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
   );
+  Logger.log(`🚀 GraphQL Playground ready at http://localhost:${port}/graphql`);
 }
 
 bootstrap();
